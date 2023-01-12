@@ -3,7 +3,7 @@ class User {
         this.id = parseInt(id) 
         this.name = name
         this.profession = profession
-        this.age =  new Date().getFullYear() - age
+        this.birthday =  new Date().getFullYear() - age
     }
 }
 

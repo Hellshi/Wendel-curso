@@ -65,8 +65,6 @@ class File {
             return new User(user)
         })
 
-        console.log('users', users)
-
         return users
     }
 }
