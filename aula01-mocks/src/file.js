@@ -10,18 +10,16 @@ const DEFAULT_OPTIONS = {
 class File {
     static async csvToJson(filePath) {
         const content = await this.getFileContent(filePath)
-        const validation = File.isValid(content)
+        const validation = this.isValid(content)
         if(!validation.valid) throw new Error(validation.error)
         return content
     }
 
     static async getFileContent(filePath) {
-        const filename = join(__dirname, filePath)
-        return (await readFile(filename)).toString('utf8')
+        return (await readFile(filePath)).toString('utf8')
     }
 
     static isValid(csvString, options = DEFAULT_OPTIONS) {
-        console.log(csvString)
         const [headers, ...fileWithoutHeader] = csvString.split('\n')
         const isHeaderValid = headers === options.fields.join(',')
         if(!isHeaderValid) {
@@ -30,7 +28,6 @@ class File {
                 valid: false
             }
         }
-
         const isContentLengthAccepted = (
             fileWithoutHeader.length > 0 &&
             fileWithoutHeader.length <= options.maxLines
@@ -49,6 +46,7 @@ class File {
 
 (async () => {
     //const result = await File.csvToJson('./../mocks/invalid-header.csv')
-    const result = await File.csvToJson('./../mocks/four-items-invalid.csv')
-    console.log(result)
+    //const result = await File.csvToJson('../mocks/four-items-invalid.csv')
 })()
+
+module.exports = File
