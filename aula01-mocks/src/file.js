@@ -1,6 +1,7 @@
 const { readFile } = require('fs/promises')
 const { join } = require('path')
 const { error } = require('./constants')
+const User = require('./user')
 
 const DEFAULT_OPTIONS = {
     maxLines: 3,
@@ -10,9 +11,14 @@ const DEFAULT_OPTIONS = {
 class File {
     static async csvToJson(filePath) {
         const content = await this.getFileContent(filePath)
+        
         const validation = this.isValid(content)
+        
         if(!validation.valid) throw new Error(validation.error)
-        return content
+        
+        const users = this.parseCSVToJson(content)
+        
+        return users
     }
 
     static async getFileContent(filePath) {
@@ -41,6 +47,27 @@ class File {
         }
 
         return { valid: true }
+    }
+
+    static parseCSVToJson(csvString) {
+        const lines = csvString.split('\n')
+
+        const firstLine = lines.shift()
+
+        const header = firstLine.split(',')
+
+        const users = lines.map((line) => {
+            const columns = line.split(',')
+            let user = {}
+            for(const index in columns) {
+                user[header[index]] = columns[index]
+            }
+            return new User(user)
+        })
+
+        console.log('users', users)
+
+        return users
     }
 }
 
