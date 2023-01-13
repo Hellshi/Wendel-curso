@@ -4,14 +4,14 @@
   },
   "dependencies": {
     "mocha": "8",
+    "nyc": "15",
     "supertest": "6"
   },
-
   "scripts": {
-    "test": "npx mocha -w ./**/*.test.js"
+    "test": "npx mocha -w --parallel ./aula04-coverage-e2e/*.test.js",
+    "cover": "npx nyc mocha --parallel ./aula04-coverage-e2e/*.test.js"
   },
-
-  "name": "Curso Wendel",
+  "name": "CursoWendel",
   "version": "1.0.0",
   "main": "index.js",
   "repository": "https://github.com/Hellshi/Wendel-curso.git",

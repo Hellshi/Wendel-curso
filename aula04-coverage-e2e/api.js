@@ -6,6 +6,16 @@ const routes = {
         return response.end();
     },
 
+    '/login:post': async(request, response) => {
+        let user
+        // Response is a iterator
+        for await(const data of request) {
+            user = JSON.parse(data)
+        }
+        response.write(`Hello ${user.username}`);
+        return response.end();
+    },
+
     default: (request, response) => {
         response.write('Hello World');
         return response.end();
