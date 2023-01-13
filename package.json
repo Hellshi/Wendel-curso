@@ -1,5 +1,20 @@
 {
   "devDependencies": {
     "sinon": "9"
-  }
+  },
+  "dependencies": {
+    "mocha": "8",
+    "supertest": "6"
+  },
+
+  "scripts": {
+    "test": "npx mocha -w ./**/*.test.js"
+  },
+
+  "name": "Curso Wendel",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/Hellshi/Wendel-curso.git",
+  "author": "hellshi <hcslimaa@gmail.com>",
+  "license": "MIT"
 }
