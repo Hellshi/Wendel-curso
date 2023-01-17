@@ -1,1 +1,23 @@
-[{"id":"e3a37e1e-b73b-4012-98eb-7e4df4ce5ddc","name":"Aventador","releaseYear":2022,"available":true,"gasAvailable":true},{"id":"8ef8738e-f112-4d07-9be5-3ea35b40854b","name":"Silverado","releaseYear":2022,"available":true,"gasAvailable":true},{"id":"0e907f56-6480-4e44-afa6-168111189d8d","name":"Model Y","releaseYear":2022,"available":true,"gasAvailable":true}]
+[
+    {
+       "id":"e3a37e1e-b73b-4012-98eb-7e4df4ce5ddc",
+       "name":"Aventador",
+       "releaseYear":2022,
+       "available":true,
+       "gasAvailable":true
+    },
+    {
+       "id":"8ef8738e-f112-4d07-9be5-3ea35b40854b",
+       "name":"Silverado",
+       "releaseYear":2022,
+       "available":true,
+       "gasAvailable":true
+    },
+    {
+       "id":"0e907f56-6480-4e44-afa6-168111189d8d",
+       "name":"Model Y",
+       "releaseYear":2022,
+       "available":true,
+       "gasAvailable":true
+    }
+ ]

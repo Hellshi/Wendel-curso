@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@faker-js/faker": "^7.6.0",
+    "chai": "4",
     "mocha": "8",
     "nyc": "15",
     "sinon": "9",
