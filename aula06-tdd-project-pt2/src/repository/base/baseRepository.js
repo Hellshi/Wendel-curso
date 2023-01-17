@@ -1,5 +1,4 @@
-const { readFile } = require('fs');
-const { writeFile } = require('fs/promises');
+const { readFile } = require('fs/promises');
 
 class BaseRepository {
     constructor({ file }) {
@@ -9,7 +8,6 @@ class BaseRepository {
     async find(itemId) {
         const content = JSON.parse( await readFile(this.file))
         if(!itemId) return content
-        
         return content.find(({ id }) => id === itemId)
     }
 }
