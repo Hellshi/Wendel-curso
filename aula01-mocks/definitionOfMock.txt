@@ -1,5 +1,0 @@
-What are mocks?
-Imagine a system with tree steps: A, B and C
-Is I wanna test from B to C without passing through A I make an object which stores a correct response from A. 
-B will use that value and proceed the test
-A is a MOCK
