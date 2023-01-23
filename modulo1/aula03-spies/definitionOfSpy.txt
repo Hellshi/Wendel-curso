@@ -1,0 +1,5 @@
+Spies:
+Look at your function to test:
+- How many times where they called
+- With which params?
+- What did they returned to you?

@@ -1,0 +1,2 @@
+What are Stubs? 
+Stubs are used to replace a system behavior to a static object
