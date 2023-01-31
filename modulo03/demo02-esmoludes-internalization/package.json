@@ -6,7 +6,8 @@
   "main": "index.js",
   "scripts": {
     "dev": "nodemon --ignore database.json --exec node src/index.js",
-    "test": "test"
+    "test": "npx mocha -w --parallel ./test/**/*.test.js",
+    "test:cover": "npx nyc mocha -r reify --parallel ./test/**/*.test.js"
   },
   "author": "",
   "license": "ISC",
@@ -15,5 +16,12 @@
     "chalk-table": "1",
     "draftlog": "1",
     "nodemon": "^2.0.20"
+  },
+  "devDependencies": {
+    "chai": "4",
+    "mocha": "8",
+    "nyc": "15",
+    "reify": "^0.20.12",
+    "sinon": "9"
   }
 }

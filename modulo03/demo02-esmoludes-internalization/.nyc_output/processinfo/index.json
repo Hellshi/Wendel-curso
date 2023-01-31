@@ -1,0 +1,1 @@
+{"processes":{"bc10c59b-c7eb-4436-b9e0-ba33c0147439":{"parent":null,"children":["edc8e8f7-1b4c-4bb2-b902-3d001c056ae9"]},"edc8e8f7-1b4c-4bb2-b902-3d001c056ae9":{"parent":"bc10c59b-c7eb-4436-b9e0-ba33c0147439","children":[]}},"files":{"/home/hell/cursoWendel/modulo03/demo02-esmoludes-internalization/src/person.js":["edc8e8f7-1b4c-4bb2-b902-3d001c056ae9"]},"externalIds":{}}

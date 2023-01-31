@@ -19,6 +19,11 @@ export default class TerminalController {
         this.initializeTable(database, language)
     }
 
+    updateTable(item) {
+        this.data.push(item)
+        this.print(chalkTable(this.getTableOptions, this.data))
+    }
+
     initializeTable(database, language) {
         const data = database.map(item => new Person(item).formatted(language))
         const table = chalkTable(this.getTableOptions(), data)
@@ -28,7 +33,7 @@ export default class TerminalController {
     }
 
     question(message='') {
-        return new Promise(resolve => this.terminal.question(message, resolve))
+        return new Promise(resolve => this.terminal.question(`${message} \n`, resolve))
     }
 
     closeTerminal() {
