@@ -1,0 +1,3 @@
+Generators are a special class of functions that simplify the task of writing iterators
+A generator is a function that produces a sequence of results instead of a single value, i.e you generate ​a series of values
+The value property will contain the value. The done property is either true or false. When the done becomes true, the generator stops and won’t generate any more values. The yield is a magical keyword that can do more things other than simply return a value and next() can do more things aside from retrieving the value.
