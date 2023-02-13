@@ -1,0 +1,16 @@
+^\d{3}.\d{3}.\d{3}-\d{2}$
+
+123.123.123-14
+321.123.345-20
+200.300.500-19
+
+{firstName: " Machine", lastName: "Everything"}
+{firstName: " Lima", lastName: "Hell"}
+{firstName: " boy", lastName: "Flutter"}
+{firstName: " bibia", lastName: "Bia"}
+
+0 <a href="http://www.youtube.com/watch?v=e-ORhEE9VVg">"Erick Wendel"</a> faz palestras e você deveria seguil-lo também lá no <a href="https://twitter.com/hell">"Twitter"</a>
+
+Aj e pode pesquisar no<a href="https://www.google.com.br/">"Google"</a> ou <a href="https://yahoo.com/">"Yahoo"</a>
+
+vai que vai
