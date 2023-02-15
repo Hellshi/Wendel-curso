@@ -1,0 +1,22 @@
+{
+  "name": "app",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon --exec node src/index.js",
+    "test": "npx mocha -w --parallel ./test/**/*.test.js",
+    "test:cover": "npx nyc mocha -r reify --parallel ./test/**/*.test.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "chai": "4",
+    "mocha": "8",
+    "nyc": "15",
+    "sinon": "9"
+  },
+  "dependencies": {
+    "pdf-parse": "^1.1.1"
+  }
+}
