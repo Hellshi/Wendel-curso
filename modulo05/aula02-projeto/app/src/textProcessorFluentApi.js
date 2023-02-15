@@ -1,3 +1,4 @@
+const { evaluateRegex } = require('../src/util')
 /* 
 
    The objective of this pattern is to execute tasks as pipelines, 
@@ -27,11 +28,17 @@ class TextProcessorFluentAPI {
             $ the search should stop at the end of the line
         */
 
-        const matchPerson = /(?<=[contratada | contratante]:\s{1})(?!\s)(.*\n.*?)$/gmi
+        const matchPerson = evaluateRegex(/(?<=[contratada | contratante]:\s{1})(?!\s)(.*\n.*?)$/gmi)
         const onlyPerson = this.#content.match(matchPerson)
         this.#content = onlyPerson
         return this
 
+    }
+
+    divideTextInColumns() {
+        const splitRegex = evaluateRegex(/,/)
+        this.#content = this.#content.map(line => line.split(splitRegex))
+        return this
     }
 
     build() {

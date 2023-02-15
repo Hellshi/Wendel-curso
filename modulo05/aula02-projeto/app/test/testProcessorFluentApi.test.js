@@ -1,4 +1,3 @@
-const {  } = require('mocha')
 const { expect } = require('chai')
 const TextProcessorFluentAPI = require('./../src/textProcessorFluentApi')
 const mock = require('./mock/valid')
@@ -28,6 +27,35 @@ describe('Text Processor Fluent Api', () => {
                 "domiciliada a Av. dos Estados, 99, bairro Jardins, São Paulo."
             ].join("\n")
         ]
+
+        expect(result).to.be.deep.equal(expected)
+    })
+
+    it('#divideTextInColumns', () => {
+
+        const content = [
+            [
+                "Xuxa da Silva, brasileira, casada, CPF 235.743.420-12, residente e",
+                "domiciliada a Rua bobos, zero, Alpha Ville, de São Paulo."
+            ].join("\n")
+        ]
+
+        const result = new TextProcessorFluentAPI(content)
+            .divideTextInColumns()
+            .build()
+
+        const expected = [
+            [
+                "Xuxa da Silva", 
+                " brasileira", 
+                " casada", 
+                " CPF 235.743.420-12", 
+                " residente e\ndomiciliada a Rua bobos",
+                " zero", 
+                " Alpha Ville",
+                " de São Paulo.",    
+            ]
+    ]
 
         expect(result).to.be.deep.equal(expected)
     })
