@@ -37,7 +37,16 @@ class TextProcessorFluentAPI {
 
     divideTextInColumns() {
         const splitRegex = evaluateRegex(/,/)
+
         this.#content = this.#content.map(line => line.split(splitRegex))
+        return this
+    }
+
+    removeEmptyCharacters() {
+        const removeCharactersRegex = evaluateRegex(/^\s+|\s+(?!\n)$/gmi)
+
+        this.#content = this.#content.map(line => Array.from(new Set([...line].map(line => line.replace(removeCharactersRegex, "")))))
+        this.#content = Array.from(this.#content)
         return this
     }
 
