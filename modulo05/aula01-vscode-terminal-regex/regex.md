@@ -1,4 +1,4 @@
-# Tips 
+# Tips n
 `\w+`: Will return every letter until it reaches a special character or word's end
 `\s`: Returns white space
 `\S`: skips white space
@@ -7,6 +7,7 @@
 `{Insert your number here}`: Quantity Identifier
 `?`: Stop at the end of the first match
 `$`: Is the mark to stop regex at that specif line
+`(\w+):\s.*,`
 
 ### Retrieve a CPF wit matching: ddd.ddd.ddd.-dd
 
