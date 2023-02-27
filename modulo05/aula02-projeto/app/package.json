@@ -14,6 +14,7 @@
     "chai": "4",
     "mocha": "8",
     "nyc": "15",
+    "reify": "^0.20.12",
     "sinon": "9"
   },
   "dependencies": {

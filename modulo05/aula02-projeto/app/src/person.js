@@ -23,10 +23,11 @@ class Person {
         this.nacionalidade = formatFirstLetter(nacionalidade)
         this.estadoCivil = formatFirstLetter(estadoCivil)
         this.documento = documento.replace(evaluateRegex(/\D/g), "")
-        this.rua = rua
+        // starts the search after "a " 
+        this.rua = rua.match(evaluateRegex(/(?<=\sa\s).*$/)).join()
         this.numero = numero
         this.bairro = bairro
-        this.estado = estado
+        this.estado = estado.replace(/\.$/, '')
     }
 }
 

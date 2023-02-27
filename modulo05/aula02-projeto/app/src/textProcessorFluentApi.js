@@ -1,4 +1,5 @@
 const { evaluateRegex } = require('../src/util')
+const Person = require('./person')
 /* 
 
    The objective of this pattern is to execute tasks as pipelines, 
@@ -47,6 +48,11 @@ class TextProcessorFluentAPI {
 
         this.#content = this.#content.map(line => Array.from(new Set([...line].map(line => line.replace(removeCharactersRegex, "")))))
         this.#content = Array.from(this.#content)
+        return this
+    }
+
+    mapPerson() {
+        this.#content = this.#content.map(line => new Person(line))
         return this
     }
 

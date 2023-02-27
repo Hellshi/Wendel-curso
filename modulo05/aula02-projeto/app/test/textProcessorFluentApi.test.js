@@ -1,5 +1,5 @@
 const { expect } = require('chai')
-const TextProcessorFluentAPI = require('./../src/textProcessorFluentApi')
+const TextProcessorFluentAPI = require('../src/textProcessorFluentApi')
 const mock = require('./mock/valid')
 
 describe('Text Processor Fluent Api', () => {
@@ -85,6 +85,40 @@ describe('Text Processor Fluent Api', () => {
                 "de São Paulo.",     
             ]
     ]
+
+        expect(result).to.be.deep.equal(expected)
+    })
+
+    it('#mapPerson', () => {
+        const content = [
+            [
+                "Xuxa da Silva",
+                "brasileira",
+                "casada",
+                "CPF 235.743.420-12",
+                "residente e\ndomiciliada a Rua bobos",
+                "zero",
+                "Alpha Ville",
+                "de São Paulo.",     
+            ]
+        ]
+
+        const result = new TextProcessorFluentAPI(content)
+            .mapPerson()
+            .build()
+
+        const expected = [
+           {
+                nome: "Xuxa da Silva",
+                nacionalidade: "Brasileira",
+                estadoCivil: "Casada",
+                documento: "23574342012",
+                rua: "Rua bobos",
+                numero: "zero",
+                bairro: "Alpha Ville",
+                estado: "de São Paulo",
+           } 
+        ]
 
         expect(result).to.be.deep.equal(expected)
     })

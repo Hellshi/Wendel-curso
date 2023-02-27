@@ -11,7 +11,7 @@ describe('Person', () => {
             "residente e\ndomiciliada a Rua bobos",
             "zero",
             "Alpha Ville",
-            "de São Paulo.",     
+            "São Paulo.",     
         ]
 
         const result = new Person(content)
