@@ -1,0 +1,15 @@
+{
+  "name": "03.test-data-builder-object-model",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "npx mocha -w test/*.test.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "chai": "4",
+    "mocha": "8"
+  }
+}
