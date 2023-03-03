@@ -1,6 +1,7 @@
 const { error } = require('./src/constants')
 const File = require('./src/file')
 const { rejects, deepStrictEqual } = require('assert');
+const CsvDataBuilder = require('./model/csvDataBuilder');
 
 (async() => {
     {
@@ -22,6 +23,8 @@ const { rejects, deepStrictEqual } = require('assert');
 
     {
         const filePath = './mocks/validFile.csv'
+
+        const csv = CsvDataBuilder.csv().build()
 
         const result = await File.csvToJson(filePath)
 
