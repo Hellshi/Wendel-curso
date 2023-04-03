@@ -44,10 +44,16 @@ describe('#Integration - Layers - Folder Structure', () => {
         expect(afterRun).toEqual(config.layers)
     })
     test('Should not create folder if it exists', async () => {
+        const beforeRun = await getFolders(config)
+        await createLayersIfNotExists(config)
+        const afterRun = await getFolders(config)
+        
+        expect(afterRun).toEqual(beforeRun)
+
 
     })
 })
 
-async function getFolders(config) {
-    return fsPromises.readdir(join(config.mainPath, config.defaultFolder))
+async function getFolders({ mainPath, defaultFolder }) {
+    return fsPromises.readdir(join(mainPath, defaultFolder))
 }
