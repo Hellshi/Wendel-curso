@@ -14,18 +14,24 @@ import { join } from 'path'
 import { tmpdir } from 'os'
 import Util from '../../src/util.js'
 
+
 function generateFilePath({ mainPath, defaultFolder, layers, componentName }) {
     return layers.map(layer => {
-        // The filePath follows this structure:
-        // src/factory/heroesFactory.js
-        const fileName = `${componentName}${Util.upperCaseFirstLetter(layer)}.js`
-        // mainPath: /Documents/projects;jsexpert
+        // factory
+        // factory/heroesFactory.js
+        const filename = `${componentName}${Util.upperCaseFirstLetter(layer)}.js`
+        // mainPath: /Documents/project/jsexpert
         // defaultMainFolder: src
         // layer: factory
         // filename: heroesFactory.js
 
-        return join(mainPath, defaultFolder, layer, fileName)
+        return join(mainPath, defaultFolder, layer, filename)
     })
+}
+
+function getAllFunctionsFromInstance(instance) {
+    return Reflect.ownKeys(Reflect.getPrototypeOf(instance))
+        .filter(method => method !== 'constructor')
 }
 
 
@@ -75,7 +81,33 @@ describe('#Integration - Files - Files Structure', () => {
         expectNotImplemented(instance.update)
         expectNotImplemented(instance.delete)
     })
-    test.todo('Service should have the same signature of repository and call all its methods')
+    test('Service should have the same signature of repository and call all its methods', async() => {
+        const myConfig = {
+            ...config,
+            layers: ['repository', 'service']
+        }
+
+        await createFiles(myConfig)
+        const [repositoryFile, serviceFile] = generateFilePath(myConfig)
+
+        const { default: Repository } = await import(repositoryFile)
+        const { default: Service } = await import(serviceFile)
+
+        const repository = new Repository()
+        const service = new Service({ repository })
+        const allRepositoryMethods = getAllFunctionsFromInstance(repository)
+
+        allRepositoryMethods
+            .forEach(method => jest.spyOn(repository, method).mockResolvedValue())
+
+        // executa todos os metodos de service
+        getAllFunctionsFromInstance(service)
+            .forEach(method => service[method].call(service, []))
+
+        allRepositoryMethods
+            .forEach(method => expect(repository[method]).toHaveBeenCalled())
+    
+    })
     test.todo('Factory instance should match layers')
 })
 

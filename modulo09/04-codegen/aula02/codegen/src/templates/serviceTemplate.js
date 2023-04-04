@@ -11,19 +11,19 @@ export default class $$componentNameService {
     }
 
     create(data) {
-        return this.productRepository.create(data)
+        return $$currentContext.create(data)
     }
 
     read(query) {
-        return this.productRepository.read(query)
+        return $$currentContext.read(query)
     }
 
     update(id, data) {
-        return this.productRepository.update(id, data)
+        return $$currentContext.update(id, data)
     }
 
     delete(id) {
-        return this.productRepository.delete(id)
+        return $$currentContext.delete(id)
     }
 }`
 
@@ -31,7 +31,7 @@ export function serviceTemplate(componentName, repositoryName) {
     const currentContext = `this.${repositoryName}`
     const txtFile = template
         .replaceAll(componentNameAnchor, Util.upperCaseFirstLetter(componentName))
-        .replace(currentContextAnchor, currentContext)
+        .replaceAll(currentContextAnchor, currentContext)
         .replaceAll(repositoryAnchor, repositoryName)
 
     return {

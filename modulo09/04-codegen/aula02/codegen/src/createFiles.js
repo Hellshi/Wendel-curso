@@ -24,7 +24,6 @@ async function executeWrites(pendingFilesToWrite) {
 }
 
 export async function createFiles({ mainPath, defaultFolder, layers, componentName }) {
-    
     const keys = Object.keys(templates)
     const pendingFilesToWrite = []
     for(const layer of layers) {
