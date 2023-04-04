@@ -13,5 +13,8 @@
   "license": "ISC",
   "devDependencies": {
     "jest": "26"
+  },
+  "dependencies": {
+    "yargs": "17"
   }
 }
