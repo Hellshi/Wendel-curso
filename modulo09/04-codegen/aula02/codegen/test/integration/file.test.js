@@ -62,7 +62,7 @@ describe('#Integration - Files - Files Structure', () => {
     })
 
     afterAll(async () => {
-       await fsPromises.rm(config.mainPath, { recursive: true })
+       //await fsPromises.rm(config.mainPath, { recursive: true })
     })
 
     test('Repository class should have create, read, update and delete methods', async() => {
@@ -108,6 +108,18 @@ describe('#Integration - Files - Files Structure', () => {
             .forEach(method => expect(repository[method]).toHaveBeenCalled())
     
     })
-    test.todo('Factory instance should match layers')
+    test('Factory instance should match layers', async() => {
+        await createFiles(config)
+        const [factoryFile, repositoryFile, serviceFile ] = generateFilePath(config)
+        const { default: Repository } = await import(repositoryFile)
+        const { default: Service } = await import(serviceFile)
+        const { default: Factory } = await import(factoryFile)
+
+        const expectedInstance = new Service({ repository: new Repository() })
+        const instance = Factory.getInstance()
+
+        expect(instance).toMatchObject(expectedInstance)
+        expect(instance).toBeInstanceOf(Service)
+    })
 })
 
