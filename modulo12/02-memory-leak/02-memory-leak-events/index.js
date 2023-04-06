@@ -1,10 +1,15 @@
 import { createServer } from 'http'
-
+import { randomBytes } from 'crypto'
 import Events from 'events'
 
 const myEvent = new Events()
 
+function getBytes() {
+    return randomBytes(1000)
+}
+
 function onData() {
+    getBytes()
     const items = []
     setInterval(() => items.push(Date.now()))
 }
