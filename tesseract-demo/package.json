@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "openai": "^4.0.0",
+    "tesseract.js": "^5.0.5"
+  }
+}
